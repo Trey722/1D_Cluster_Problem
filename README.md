@@ -1,7 +1,7 @@
 This is an implemntation of a worst case O(N) soultion to the 1D Cluster Problem. 
 
 
-#What is the 1D Cluster Problem?
+# What is the 1D Cluster Problem?
 
 
 Lets say you have an unsorted array. 
