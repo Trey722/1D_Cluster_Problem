@@ -7,8 +7,8 @@ This is an implemntation of a worst case O(N) soultion to the 1D Cluster Problem
 Lets say you have an unsorted array. 
 
 
-|  5 |  3 |  2 |  7 | 20  | 15  |   18|
-| -
+[ 5, 3, 2, 7, 20, 15, 18]
+
 
 The 1D cluster problem would be finding the two pairs that would be ajacent in sorted order that are maximally farthest apart.
 
