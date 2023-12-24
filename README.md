@@ -13,77 +13,23 @@ Lets say you have an unsorted array.
 The 1D cluster problem would be finding the two pairs that would be ajacent in sorted order that are maximally farthest apart.
 
 
-# Simple O(N LOG N) Soultion
-A simple soultion to this problem is to sort it like the following piece of code 
-
-```c
-float findClusterExtermeViaSorting(float array[], int size)
-{
-    mergeSort(array, 0, size - 1);
-
-    float a;
-    float biggestDiffernce = 0;
-    float BigA = array[0];
-    float b;
-    for (int i =0; i < size - 1; i++)
-    {
-        a = array[i];
-        b = array[i + 1];
-        if (fabsf(a - b) > biggestDiffernce)
-        {
-            biggestDiffernce = fabsf(a - b);
-            BigA = a;
-        }
-    }
-
-    return BigA;
-}
-```
-
-This code calls mergeSort and then loops through and returns the lower pair in the pair that has the furthest distance. This will succesfully return 7 and 15. This guartness an O(N LOG N) soultion to the problem. 
-
-# The O(N) Soultion
+# How to use my implmentation 
 
 
-1. First we get rid of the biggest and smallest number from the array in O(N) time using the following code. 
 
-``````c
-float * findMinMax(float array[], int n)
-{
-    float min = array[0];
-    float max = array[0];
-    for (int i =0; i < n; i++)
-    {
-        if (array[i] < min) min = array[i];
+![carbon(1)](https://github.com/Trey722/Cluster_Problem/assets/141661331/23006ec0-0748-4b4d-b871-0d8b4effb2e2)
 
-        else if (array[i] > max) max = array[i];
+This is the main function you will call. This function takes an array of floats and a size as an input, and it will return the lower number in the pair that will maxmise the distance between two clusters. 
 
-    }
+## Error handeling 
 
-    float * pair = malloc(sizeof(float) * 2);
-
-    if (pair == NULL) return NULL;
-
-    pair[0] = min;
-    pair[1] = max;
-
-    return pair;
-}
-``````
+![carbon(1)](https://github.com/Trey722/Cluster_Problem/assets/141661331/6dac4d3b-e6a6-4ffc-8339-76031840194a)
 
 
-We create an array of O(N - 1) buckets. We then insert each value into a bucket based on the following. 
+Due to the fact that we are dealing with changing numbers that could be both positve or negative error handling is done by enumartion. If the function recives a NULL_POINTER. You can check the output by writing the following C code.
 
-```c
-	float delta = fabsf(max - min );
-    float queryValue = value;
-    float ratio = (float)(queryValue - min) / delta;
-    int index = (int)(ratio * n);
-```
 
-This uses nearly the following equation.
 
-[(queryValue - min) / (Max - Min) ] * size of Array. 
+![carbon](https://github.com/Trey722/Cluster_Problem/assets/141661331/67fce7e7-ed45-48eb-8008-cabecfb41b03)
 
-You then insert each element into a bucket. 
 
